@@ -6,6 +6,7 @@ import Edit from '../botones/editEmploye/Edit';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import FormularioRegistro from './FormularioRegistro';
+import EliminarRegistro from './EliminarRegistro';
 import { getEmploye } from '../../firebase/Firebase.js';
 import Home from '../botones/home-admin/Home';
 import Empleados from '../botones/crear empleados/Empleados';
@@ -14,6 +15,7 @@ import Chart from '../botones/charts/Chart';
 
 export default function Registro(props) {
   const [register, setRegister] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   const [users, setUsers] = useState([]);
   const [data, setData] = useState(false);
 
@@ -34,6 +36,10 @@ export default function Registro(props) {
     console.log('hola');
   }
 
+  function onDelete(newState) {
+    setIsDelete(newState);
+  }
+
   return (
     <section className='container_dashboard'>
       <div className='bar'>
@@ -49,11 +55,12 @@ export default function Registro(props) {
       </div>
       <div className='dashboard'>
         <div className='container__register'>
+          {isDelete === true ? <EliminarRegistro delete={onDelete} /> : ''}
           {register === true ? <FormularioRegistro delete={isRegister} /> : ''}
         </div>
         <h1 className='dashboard__title--text'>{'administración de empleados'.toUpperCase()}</h1>
         <div className='container__employes'>
-          <Agregar delete={isRegister}></Agregar>
+          <Agregar register={isRegister}></Agregar>
           <div className='table'>
             <table className='table__employes'>
               <thead className='table__columns'>
@@ -76,7 +83,7 @@ export default function Registro(props) {
                       <td className='table__user--text'>{user.email}</td>
                       <td className='table__user--text'>{user.password}</td>
                       <td className='table__user--btns'>
-                        <Delete />
+                        <Delete delete={onDelete} />
                         <Edit />
                       </td>
                     </tr>

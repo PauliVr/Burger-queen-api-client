@@ -5,7 +5,7 @@ export default function Agregar(props) {
     <button
       className='btn__button'
       onClick={() => {
-        props.delete(true);
+        props.register(true);
       }}
     >
       <p className='btn__title'>{'Agregar empleado'.toUpperCase()}</p>
