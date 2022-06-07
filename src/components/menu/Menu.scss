@@ -34,40 +34,129 @@
   }
 }
 
-.table {
+.input__group {
   color: Globals.$color-white;
-  margin: 10px 0;
+}
 
-  &__dishes {
-    width: 99%;
-    text-align: center;
-    margin: 0 5px;
-    border-spacing: 0 8px;
+.menu__title--text {
+  color: Globals.$color-white;
+  margin: 40px 0;
+  font-size: 48px;
+  text-align: center;
+}
+
+.menu__title {
+  color: Globals.$color-white;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  margin: 20px 30px;
+}
+
+.menu__platillos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 108px;
+  width: 90vw;
+  margin: 30px 10px;
+}
+
+.menu__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin: 10px 30px;
+  color: Globals.$color-white;
+
+  &--employe {
+    font-size: 16px;
   }
 
-  &__title {
-    margin: 0 10px;
-    padding: 15px 0;
+  &--date {
+    font-size: 14px;
+    margin: 10px 0;
   }
 
-  &__columns {
-    background-color: Globals.$color-bar;
-  }
-
-  &__user--text {
-    padding: 15px 0;
-    background-color: Globals.$color-bar;
-  }
-
-  &__user--btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 15px 0;
-    background-color: #1f1d2b;
+  &--forms {
+    font-weight: 600;
   }
 }
 
-tbody {
-  font-size: 14px;
+.input__group {
+  margin: 10px 0;
+}
+
+.inputs__group {
+  margin: 10px 0;
+  color: Globals.$color-white;
+
+  &--input {
+    font-size: 16px;
+    background-color: transparent;
+    margin: 0 25px;
+    border-bottom: Globals.$color-bar;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+  }
+  &--options {
+    margin: 0 25px;
+  }
+}
+
+.platillo {
+  background-color: #1f1d2b;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: #ffffff;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 316px;
+
+  &__info {
+    margin: 25px;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    width: 88%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__name,
+  &__description,
+  &__price {
+    margin: 7px 0;
+  }
+}
+
+.img {
+  width: 237px;
+  height: 143px;
+  position: absolute;
+  top: 0;
+  right: 32px;
+}
+
+.btn__group {
+  margin: 10px 0;
+
+  &--button {
+    width: 150px;
+    height: 30px;
+    border: none;
+    color: Globals.$color-white;
+    font-weight: 600;
+    background-color: Globals.$color-principal;
+  }
+
+  &--button:active {
+    background-color: #b13b38;
+  }
 }
