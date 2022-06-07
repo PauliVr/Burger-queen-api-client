@@ -12,6 +12,7 @@ import './Platillo.scss';
 
 export default function Platillo(props) {
   const [data, setData] = useState([]);
+  const [register, setRegister] = useState(false);
   let api = helpHttp();
   let url = 'http://localhost:5000/products';
 
@@ -25,6 +26,10 @@ export default function Platillo(props) {
       console.log(data);
     });
   }, []);
+
+  function isRegister(newState){
+    setRegister(true);
+  }
 
   return (
     <section className='container__platillos'>
@@ -43,7 +48,7 @@ export default function Platillo(props) {
         <div className='platillos__register'></div>
         <h1 className='platillos__title'>{'administrar platillos'.toUpperCase()}</h1>
         <div className='platillos__info'>
-          <AgregarPlatillo />
+          <AgregarPlatillo register={isRegister} />
           <div className='tabla'>
             <table className='tabla__platillos'>
               <thead className='tabla__columns'>
