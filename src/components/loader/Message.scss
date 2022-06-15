@@ -1,0 +1,11 @@
+.error {
+  margin: 30px;
+  &__img {
+    width: 574px;
+  }
+
+  &__msg {
+    color: #ffffff;
+    font-weight: 300;
+  }
+}
