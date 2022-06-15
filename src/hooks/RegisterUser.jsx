@@ -35,7 +35,7 @@ const useForm = (callback) => {
         }
         break;
 
-      case 'type':
+      case 'rol':
         if (!value) {
           setErrors({
             ...errors,
@@ -72,17 +72,12 @@ const useForm = (callback) => {
         }
         break;
 
-      case 'pass':
+      case 'password':
         if (!value) {
           setErrors({
             ...errors,
             repeatPass:
               'La contraseña debe tener 9 caracteres -> una mayúscula, un número, una minúscula y un caráter especial',
-          });
-        } else if (!value) {
-          setErrors({
-            ...errors,
-            repeatPass: 'La contraseña que ingresaste no coincide con la anterior',
           });
         } else {
           const newObj = omit(errors, 'repeatPass');
@@ -104,17 +99,26 @@ const useForm = (callback) => {
 
     validate(name, val);
 
-    console.log('hola');
-
     setValues({
       ...values,
       [name]: val,
+    });
+    console.log(values);
+  };
+
+  const valueChange = (data) => {
+    setValues({
+      name: data.name,
+      rol: data.rol,
+      phone: data.phone,
+      email: data.email,
+      password: data.password,
     });
   };
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-    console.log(event.target);
+
     if (Object.keys(errors).length === 0 && Object.keys(values).length !== 0) {
       callback();
       event.target.reset();
@@ -127,6 +131,7 @@ const useForm = (callback) => {
     values,
     errors,
     handleChange,
+    valueChange,
     handleSubmit,
   };
 };

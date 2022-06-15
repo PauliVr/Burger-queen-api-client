@@ -1,43 +1,43 @@
 @use '../../Globals.scss';
 
 .container__home {
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
 }
 
 .bar {
+  background-color: #1f1d2b;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  background-color: #1f1d2b;
   width: 8%;
 
   &__btn--log {
-    position: fixed;
     bottom: 0;
     margin-bottom: 18px;
+    position: fixed;
   }
 
   &__btns--opciones {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     height: 60%;
   }
 }
 
 .dashboard__home {
-  width: 100%;
-  height: auto;
   background: Globals.$color-fondo;
+  height: auto;
   position: relative;
+  width: 100%;
 
   &--title {
     color: Globals.$color-white;
-    margin: 70px 0;
     font-size: 48px;
+    margin: 70px 0;
     text-align: center;
   }
 

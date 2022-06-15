@@ -1,6 +1,18 @@
+import deleteEmploye from '../../firebase/Firebase';
 import './EliminarRegistro.scss';
 
 export default function EliminarRegistro(props) {
+  console.log(props.id);
+  console.log(props.name);
+
+  async function deletedUser(id) {
+    if (id) {
+      await deleteEmploye(id);
+      props.delete(false);
+    }
+    console.log('se elimino el usuario con id: ' + id);
+  }
+
   return (
     <section className='container__delete'>
       <button
@@ -22,8 +34,16 @@ export default function EliminarRegistro(props) {
         <h4 className='delete__subtitle'>
           {'estas segur@ que deseas eliminar al empleado'.toUpperCase()}
         </h4>
-        <p className='delete__name'>{'paulette villegas'.toUpperCase()}</p>
-        <button className='delete__btn'>{'eliminar empleado'.toUpperCase()}</button>
+        <p className='delete__name'>{props.name.toUpperCase()}</p>
+        <button
+          className='delete__btn'
+          onClick={() => {
+            deletedUser(props.id);
+            console.log(props.id);
+          }}
+        >
+          {'eliminar empleado'.toUpperCase()}
+        </button>
       </div>
     </section>
   );

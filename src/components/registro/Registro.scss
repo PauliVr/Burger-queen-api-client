@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: space-around;
     height: 60%;
+    position: fixed;
   }
 
   &__btn--add {
@@ -51,6 +52,7 @@
 .container__register {
   position: absolute;
   right: 0;
+  position: fixed;
 }
 
 .container__employes {

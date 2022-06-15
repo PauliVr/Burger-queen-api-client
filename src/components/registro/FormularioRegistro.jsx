@@ -1,37 +1,51 @@
 import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/RegisterUser';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, registerNewUser, userExist } from '../../firebase/Firebase.js';
+import { auth, registerNewUser, updateUser, userExist } from '../../firebase/Firebase.js';
 import './FormularioRegistro.scss';
+import { useEffect, useState } from 'react';
 
 export default function FormularioRegistro(props) {
   let navigate = useNavigate();
-  const { handleChange, values, errors, handleSubmit } = useForm(formRegister);
-  console.log(values.name);
-  console.log(values.type);
-  console.log(values.phone);
-  console.log(values.email);
-  console.log(values.pass);
+
+  const { valueChange, handleChange, values, errors, handleSubmit } = useForm(formRegister);
+
+  useEffect(() => {
+    console.log(props.data);
+    if (props.data) {
+      valueChange(props.data);
+    }
+  }, []);
 
   async function formRegister() {
-    const res = await createUserWithEmailAndPassword(auth, values.email, values.pass);
-    try {
-      await registerNewUser(
-        auth.currentUser.uid,
-        values.name,
-        values.type,
-        values.phone,
-        values.email,
-        values.pass
-      );
+    console.log(props.data.uid);
+    if (props.data.uid) {
+      console.log(props.data);
+      const isEditing = await updateUser(values, props.data.uid);
+      console.log(isEditing);
+    } else {
+      console.log(auth);
+      console.log(values.email);
+      console.log(values.password);
+      const res = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      try {
+        await registerNewUser(
+          auth.currentUser.uid,
+          values.name,
+          values.rol,
+          values.phone,
+          values.email,
+          values.password
+        );
 
-      const registered = await userExist(auth.currentUser.uid);
-      console.log(registered);
-      if (registered && auth.currentUser.uid) {
-        navigate('/registro');
+        const registered = await userExist(auth.currentUser.uid);
+        console.log(registered);
+        if (registered && auth.currentUser.uid) {
+          navigate('/registro');
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   }
 
@@ -60,6 +74,7 @@ export default function FormularioRegistro(props) {
               id='name'
               onChange={handleChange}
               placeholder='Jhon Doe'
+              value={values.name}
               required
             />
           </div>
@@ -73,8 +88,9 @@ export default function FormularioRegistro(props) {
                   type='radio'
                   onChange={handleChange}
                   id='cocinero'
-                  name='type'
+                  name='rol'
                   value='cocinero'
+                  // checked={values.rol === 'cocinero' ? true : false}
                 />
                 <label className='radio__label' htmlFor='cocinero'>
                   {'cocinero'.toUpperCase()}
@@ -85,8 +101,9 @@ export default function FormularioRegistro(props) {
                   onChange={handleChange}
                   type='radio'
                   id='mesero'
-                  name='type'
+                  name='rol'
                   value='mesero'
+                  // checked={values.rol === 'mesero' ? true : false}
                 />
                 <label className='radio__label' htmlFor='mesero'>
                   {'mesero'.toUpperCase()}
@@ -97,8 +114,9 @@ export default function FormularioRegistro(props) {
                   onChange={handleChange}
                   type='radio'
                   id='administrador'
-                  name='type'
+                  name='rol'
                   value='administrador'
+                  // checked={values.rol === 'administrador' ? true : false}
                 />
                 <label className='radio__label' htmlFor='administrador'>
                   {'administrador'.toUpperCase()}
@@ -117,6 +135,7 @@ export default function FormularioRegistro(props) {
               name='phone'
               id='phone'
               placeholder='xx - xxxx - xxxx'
+              value={values.phone}
               required
             />
           </div>
@@ -131,6 +150,7 @@ export default function FormularioRegistro(props) {
               id='email'
               onChange={handleChange}
               placeholder='jhondoe@burguerqueen.com'
+              value={values.email}
               required
             />
           </div>
@@ -141,11 +161,12 @@ export default function FormularioRegistro(props) {
             <input
               className='group__input'
               type='password'
-              name='pass'
+              name='password'
               onChange={handleChange}
               id='pass'
               placeholder='Burguer1@queen'
-              required
+              // value={values.password}
+              // required
             />
           </div>
           <button className='btn--register'>{'registrar empleado'.toUpperCase()}</button>

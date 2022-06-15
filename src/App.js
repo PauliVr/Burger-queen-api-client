@@ -5,7 +5,7 @@ import Registro from './components/registro/Registro.js';
 import AdminHome from './components/adminHome/AdminHome.jsx';
 import Menu from './components/menu/Menu';
 import Platillo from './components/platillo/Platillo';
-import EliminarPlatillo from './components/platillo/EliminarPlatillo';
+import Loader from './components/loader/Loader.jsx';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Route path='/registro' element={<Registro />} />
         <Route path='/informacion-pedidos' element={<AdminHome />}></Route>
         <Route path='/menu' element={<Menu />}></Route>
-        <Route path='/prueba' element={<EliminarPlatillo />} />
+        <Route path='/loader' element={<Loader />} />
       </Routes>
     </div>
   );
