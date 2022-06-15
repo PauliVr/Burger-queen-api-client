@@ -6,12 +6,12 @@
 }
 
 .btn__button {
+  align-items: center;
   background-color: transparent;
   border-style: none;
-  width: 182px;
-  height: 40px;
   display: flex;
   flex-direction: row-reverse;
-  align-items: center;
+  height: 40px;
   margin: 0 10px;
+  width: 182px;
 }

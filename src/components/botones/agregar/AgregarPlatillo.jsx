@@ -1,6 +1,6 @@
 import './AgregarPlatillo.scss';
 
-export default function AgregarPlatillos(props) {
+export default function AgregarPlatillo(props) {
   return (
     <button
       className='btn__agregar'

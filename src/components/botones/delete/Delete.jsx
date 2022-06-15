@@ -5,7 +5,9 @@ export default function Delete(props) {
     <button
       className='btn__del'
       onClick={() => {
+        // console.log(props.id);
         props.delete(true);
+        props.isId(props.id);
       }}
     >
       <img src='/assets/trash-icon.svg' alt='icon' />
