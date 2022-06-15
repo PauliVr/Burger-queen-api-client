@@ -64,3 +64,34 @@ export async function getEmploye() {
 
   return data;
 }
+
+export default function deleteEmploye(id) {
+  deleteDoc(doc(db, 'users', id));
+}
+
+export async function updateUser(data, uid) {
+  console.log(data);
+  let alert = '';
+  try {
+    const docRef = doc(db, 'users', uid);
+    console.log(uid);
+    console.log(data.name);
+    console.log(data.rol);
+    console.log(data.phone);
+    console.log(data.email);
+    console.log(data.password);
+    await updateDoc(docRef, {
+      uid: uid,
+      name: data.name,
+      rol: data.rol,
+      phone: data.phone,
+      email: data.email,
+      password: data.password,
+    });
+    alert = 'check';
+  } catch (e) {
+    console.log(e);
+    alert = 'uncheck';
+  }
+  return alert;
+}
