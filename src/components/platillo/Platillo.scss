@@ -19,6 +19,7 @@
     align-items: center;
     justify-content: space-around;
     height: 60%;
+    position: fixed;
   }
 
   &--log {
@@ -33,9 +34,11 @@
   height: auto;
   background: Globals.$color-fondo;
   position: relative;
+
   &__register {
     position: absolute;
     right: 0;
+    position: fixed;
   }
 
   &__title {
@@ -94,4 +97,9 @@
 
 tbody {
   font-size: 14px;
+}
+
+.table__image {
+  width: 160px;
+  height: 66px;
 }
