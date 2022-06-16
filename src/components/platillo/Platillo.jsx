@@ -30,6 +30,7 @@ export default function Platillo() {
    * variable para elevar el estado del botón al formulario, esta guarda el id del elemento a eliminar
    */
   const [id, setId] = useState('');
+  const [name, setName] = useState('');
 
   let api = helpHttp();
   let url = 'http://localhost:5000/products';
@@ -115,10 +116,12 @@ export default function Platillo() {
     setIsDelete(newState);
   }
 
-  function isId(id) {
+  function isId(id, name) {
     setId(id);
-    // console.log(id);
+    setName(name);
   }
+
+  console.log(name, id);
 
   function isEditing(newValues) {
     setDataToEdit(newValues);
@@ -154,12 +157,7 @@ export default function Platillo() {
             ''
           )}
           {isDelete === true ? (
-            <EliminarPlatillo
-              delete={onDelete}
-              isId={id}
-              deleteData={deleteData}
-              setDataToEdit={setDataToEdit}
-            />
+            <EliminarPlatillo delete={onDelete} name={name} isId={id} deleteData={deleteData} />
           ) : (
             ''
           )}
@@ -198,7 +196,12 @@ export default function Platillo() {
                         </td>
                         <td className='tabla__user--text'>{platillo.type}</td>
                         <td className='tabla__user--btns '>
-                          <Delete delete={onDelete} isId={isId} id={platillo.id}></Delete>
+                          <Delete
+                            delete={onDelete}
+                            isId={isId}
+                            id={platillo.id}
+                            name={platillo.name}
+                          ></Delete>
                           <Edit
                             register={isRegister}
                             isEdite={isEditing}

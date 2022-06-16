@@ -2,7 +2,7 @@ import deleteEmploye from '../../firebase/Firebase';
 import './EliminarRegistro.scss';
 
 export default function EliminarRegistro(props) {
-  console.log(props.id);
+  console.log(props.isId);
   console.log(props.name);
 
   async function deletedUser(id) {
@@ -38,8 +38,8 @@ export default function EliminarRegistro(props) {
         <button
           className='delete__btn'
           onClick={() => {
-            deletedUser(props.id);
-            console.log(props.id);
+            deletedUser(props.isId);
+            console.log(props.isId);
           }}
         >
           {'eliminar empleado'.toUpperCase()}

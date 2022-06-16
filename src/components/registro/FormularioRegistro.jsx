@@ -18,7 +18,6 @@ export default function FormularioRegistro(props) {
   }, []);
 
   async function formRegister() {
-    console.log(props.data.uid);
     if (props.data.uid) {
       console.log(props.data);
       const isEditing = await updateUser(values, props.data.uid);
@@ -55,7 +54,7 @@ export default function FormularioRegistro(props) {
         type='button'
         className='btn__close'
         onClick={() => {
-          props.delete(false);
+          props.register(false);
         }}
       >
         <img className='btn__img' src='/assets/close-icon.svg' alt='IconClose' />

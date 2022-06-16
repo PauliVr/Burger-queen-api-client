@@ -7,7 +7,7 @@ export default function Delete(props) {
       onClick={() => {
         // console.log(props.id);
         props.delete(true);
-        props.isId(props.id);
+        props.isId(props.id, props.name);
       }}
     >
       <img src='/assets/trash-icon.svg' alt='icon' />

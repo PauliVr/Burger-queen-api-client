@@ -22,7 +22,7 @@ export default function EliminarPlatillo(props) {
         <h4 className='delete__subtitle'>
           {'estas segur@ que deseas eliminar el platillo'.toUpperCase()}
         </h4>
-        <p className='delete__name'>{'hamburguesa con queso'.toUpperCase()}</p>
+        <p className='delete__name'>{props.name.toUpperCase()}</p>
         <button
           className='delete__btn'
           onClick={() => {

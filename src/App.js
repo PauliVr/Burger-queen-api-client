@@ -17,7 +17,6 @@ function App() {
         <Route path='/registro' element={<Registro />} />
         <Route path='/informacion-pedidos' element={<AdminHome />}></Route>
         <Route path='/menu' element={<Menu />}></Route>
-        <Route path='/loader' element={<Loader />} />
       </Routes>
     </div>
   );

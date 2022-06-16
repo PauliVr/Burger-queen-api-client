@@ -13,13 +13,13 @@ import Empleados from '../botones/crear empleados/Empleados';
 import Platillos from '../botones/platillos/Platillos';
 import Chart from '../botones/charts/Chart';
 
-export default function Registro(props) {
+export default function Registro() {
   const [register, setRegister] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
   const [users, setUsers] = useState([]);
   const [data, setData] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
-  const [userId, setUserId] = useState('');
+  const [id, setId] = useState('');
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -45,11 +45,12 @@ export default function Registro(props) {
     setIsDelete(newState);
   }
 
-  function deletedId(newId, newName) {
-    setUserId(newId);
-    setName(newName);
+  function isId(id, name) {
+    setId(id);
+    setName(name);
   }
 
+  console.log(name, id);
   /**
    * está función agrega la fata a la variable de estado DataUpdate y se la manda al formulario por props
    * @param {Object} data
@@ -73,8 +74,8 @@ export default function Registro(props) {
       </div>
       <div className='dashboard'>
         <div className='container__register'>
-          {isDelete === true ? <EliminarRegistro name={name} id={userId} delete={onDelete} /> : ''}
-          {register === true ? <FormularioRegistro delete={isRegister} data={dataUpdate} /> : ''}
+          {isDelete === true ? <EliminarRegistro delete={onDelete}  name={name} isId={id}  /> : ''}
+          {register === true ? <FormularioRegistro register={isRegister} data={dataUpdate} /> : ''}
         </div>
         <h1 className='dashboard__title--text'>{'administración de empleados'.toUpperCase()}</h1>
         <div className='container__employes'>
@@ -101,23 +102,12 @@ export default function Registro(props) {
                       <td className='table__user--text'>{user.email}</td>
                       <td className='table__user--text'>{user.password}</td>
                       <td className='table__user--btns'>
-                        <Delete
-                          delete={onDelete}
-                          deleteId={deletedId}
-                          id={user.uid}
-                          name={user.name}
-                        />
+                        <Delete delete={onDelete} isId={isId} id={user.uid} name={user.name} />
                         <Edit
-                          delete={isRegister}
-                          edit={assignData}
-                          data={{
-                            uid: user.uid,
-                            name: user.name,
-                            rol: user.rol,
-                            phone: user.phone,
-                            email: user.email,
-                            password: user.password,
-                          }}
+                          register={isRegister}
+                          isEdite={assignData}
+                          data={user}
+                          isId={isId}
                         />
                       </td>
                     </tr>

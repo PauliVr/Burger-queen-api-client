@@ -33,7 +33,7 @@ export default function AdminHome() {
           </button>
           <button className='opcion' onClick={() => navigate('/platillos')}>
             <img src='/assets/platillos.svg' alt='' />
-            <h3 className='opcion__text'>{'administrar pedidos'.toUpperCase()}</h3>
+            <h3 className='opcion__text'>{'administrar platillos'.toUpperCase()}</h3>
           </button>
           <button className='opcion' onClick={() => navigate('/informacion-pedidos')}>
             <img src='/assets/info-pedidos.svg' alt='' />
