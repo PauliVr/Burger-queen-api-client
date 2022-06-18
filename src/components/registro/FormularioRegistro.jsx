@@ -3,7 +3,7 @@ import useForm from '../../hooks/RegisterUser';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, registerNewUser, updateUser, userExist } from '../../firebase/Firebase.js';
 import './FormularioRegistro.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function FormularioRegistro(props) {
   let navigate = useNavigate();
@@ -72,7 +72,7 @@ export default function FormularioRegistro(props) {
               name='name'
               id='name'
               onChange={handleChange}
-              placeholder='Jhon Doe'
+              placeholder='Jon Doe'
               value={values.name}
               required
             />
@@ -163,7 +163,7 @@ export default function FormularioRegistro(props) {
               name='password'
               onChange={handleChange}
               id='pass'
-              placeholder='Burguer1@queen'
+              placeholder='Burguer1@bqueen'
               // value={values.password}
               // required
             />

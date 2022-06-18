@@ -56,11 +56,11 @@
 
 .menu__platillos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
-  row-gap: 108px;
+  row-gap: 98px;
   width: 90vw;
-  margin: 30px 10px;
+  margin: 88px 10px;
 }
 
 .menu__info {
@@ -107,27 +107,28 @@
 }
 
 .platillo {
-  background-color: #1f1d2b;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
   color: #ffffff;
   padding: 14px;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  height: 316px;
+  height: 218px;
+  position: relative;
 
   &__info {
-    margin: 25px;
+    margin: 8px 0;
+    position: absolute;
+    bottom: 0;
   }
 
   &__btn {
-    background-color: transparent;
+    background-color: #1f1d2b;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     border: none;
     width: 88%;
     height: 100%;
-    position: relative;
   }
 
   &__name,
@@ -139,10 +140,10 @@
 
 .img {
   width: 237px;
-  height: 143px;
+  height: 128px;
   position: absolute;
-  top: 0;
-  right: 32px;
+  right: 0;
+  bottom: 132px;
 }
 
 .btn__group {

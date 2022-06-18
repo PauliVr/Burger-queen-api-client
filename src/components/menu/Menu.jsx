@@ -78,13 +78,13 @@ export default function Menu(props) {
           <div className='menu__platillos'>
             {db.map((platillo) => {
               return (
-                <button className='platillo__btn'>
+                <button className='platillo__btn' key={Math.random().toString(36).slice(2)}>
                   <div className='platillo'>
                     <div className='platillo__img'>
-                      <img className='img' src={platillo.image} alt='' />
+                      <img className='img' src={platillo.img} alt='' />
                     </div>
                     <div className='platillo__info'>
-                      <h3 className='platillo__name'>{platillo.name}</h3>
+                      <h3 className='platillo__name'>{platillo.name.toUpperCase()}</h3>
                       <p className='platillo__description'>{platillo.description}</p>
                       <p className='platillo__price'>{'$' + platillo.price}</p>
                     </div>
