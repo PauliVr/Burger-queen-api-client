@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": "354352",
-      "name": "Hamburguesa sencilla",
-      "type": "comida",
-      "description": "Hamburguesa con carne, rebanadas de queso, pepinillos, tomate y cebolla",
-      "price": 79.9,
-      "img": "/assets/imgs/H-sencilla.svg"
-    },
-    {
       "id": "1655399281140",
       "name": "Hamburguesa de pollo",
       "type": "Comida",
