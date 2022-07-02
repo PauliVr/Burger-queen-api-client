@@ -5,6 +5,11 @@
   display: flex;
 }
 
+.container__platillo {
+  display: flex;
+  flex-direction: column;
+}
+
 .bar {
   display: flex;
   flex-direction: column;
@@ -12,6 +17,7 @@
   justify-content: space-between;
   background-color: Globals.$color-bar;
   width: 8%;
+  height: 500vh;
 
   &__btns--opc {
     display: flex;
@@ -41,9 +47,10 @@
 
 .menu__title--text {
   color: Globals.$color-white;
-  margin: 40px 0;
+  margin: 20px 0;
   font-size: 48px;
   text-align: center;
+  width: 87vw;
 }
 
 .menu__title {
@@ -67,9 +74,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  margin: 10px 30px;
-  color: Globals.$color-white;
+  /* margin: 0px 26px; */
+  padding: 0 26px;
+  width: 92vw;
+  color: #ffffff;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(31, 29, 43, 0.94);
 
   &--employe {
     font-size: 16px;
@@ -99,51 +110,34 @@
     margin: 0 25px;
     border-bottom: Globals.$color-bar;
     border: none;
+    color: Globals.$color-white;
     border-bottom: 2px solid #ffffff;
   }
   &--options {
-    margin: 0 25px;
+    background-color: transparent;
+    color: white;
+    padding: 7px;
+    border: none;
+    border-bottom: 3px solid white;
+    width: 192px;
+    margin: 0 49px;
+    font-size: 16px;
   }
 }
 
-.platillo {
-  color: #ffffff;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 218px;
-  position: relative;
-
-  &__info {
-    margin: 8px 0;
-    position: absolute;
-    bottom: 0;
-  }
-
-  &__btn {
-    background-color: #1f1d2b;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    border: none;
-    width: 88%;
-    height: 100%;
-  }
-
-  &__name,
-  &__description,
-  &__price {
-    margin: 7px 0;
-  }
+.options__opt {
+  color: Globals.$color-white;
+  background-color: Globals.$color-fondo;
 }
 
 .img {
   width: 237px;
   height: 128px;
   position: absolute;
-  right: 0;
+  /* right: 0; */
+  left: 50%;
   bottom: 132px;
+  transform: translateX(-50%);
 }
 
 .btn__group {
@@ -161,4 +155,26 @@
   &--button:active {
     background-color: #b13b38;
   }
+}
+
+.btn__container {
+  width: 86vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.platillos__menu {
+  position: absolute;
+  top: 336px;
+  z-index: 1;
+}
+
+.menu__cart {
+  position: absolute;
+  right: 0;
+  position: fixed;
+  z-index: 4;
 }

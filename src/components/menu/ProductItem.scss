@@ -1,0 +1,84 @@
+@use '../../Globals.scss';
+
+.platillo {
+  color: #ffffff;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 218px;
+  position: relative;
+
+  &__info {
+    margin: 8px 0;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+  }
+
+  &__btn {
+    background-color: #1f1d2b;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: none;
+    width: 88%;
+    height: 100%;
+  }
+
+  &__name,
+  &__description,
+  &__price {
+    margin: 7px 0;
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  &__reduce,
+  &__add {
+    background-color: Globals.$color-principal;
+    color: Globals.$color-white;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    font-size: 25px;
+    border: none;
+    margin: 0 10px;
+    box-shadow: 0 0 3px 4px rgba(Globals.$color-principal, 0.9);
+  }
+
+  &__input {
+    border: none;
+    width: 20%;
+    background: transparent;
+    border-bottom: 2px solid #b13b38;
+    margin: 8px 5px;
+  }
+
+  &__submit {
+    margin: 21px 0;
+    padding: 14px;
+    background-color: Globals.$color-principal;
+    color: #ffffff;
+    border: none;
+  }
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter__input {
+  color: #ffffff;
+  text-align: center;
+}
+
+.add__dish {
+  align-self: center;
+}

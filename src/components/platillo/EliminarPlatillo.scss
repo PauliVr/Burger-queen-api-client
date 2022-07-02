@@ -1,14 +1,13 @@
 @use '../../Globals.scss';
 .container__delete {
-  overflow: hidden;
-  background-color: rgba(31, 29, 43, 0.94);
-  width: 50vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: fle;
-  align-self: flex-end;
+     overflow: hidden;
+    background-color: rgba(31, 29, 43, 0.94);
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-self: flex-end;
 }
 
 .button__close {

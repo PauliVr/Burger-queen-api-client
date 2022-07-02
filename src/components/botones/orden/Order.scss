@@ -1,0 +1,21 @@
+@use '../../../Globals.scss';
+
+.title__order {
+  color: Globals.$color-white;
+  font-size: 13px;
+}
+
+.img__order {
+  margin: 0 8px;
+}
+
+.btn__order {
+  align-items: center;
+  background-color: transparent;
+  border-style: none;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 40px;
+  margin: 0 10px;
+  width: 182px;
+}
