@@ -2,21 +2,55 @@ import './Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, userExist } from '../../firebase/Firebase.js';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, userExist, db, app } from '../../firebase/Firebase.js';
 import { useState } from 'react';
 
 export default function LogIn() {
   const navigate = useNavigate();
   const [values, setValues] = useState({});
+  const [user, setUser] = useState(null);
+  const [rol, setRol] = useState('');
 
-  useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
-      console.log(user);
-      if (user && user.uid) {
-        navigate('/registro');
-      }
-    });
-  }, [navigate]);
+  // async function getRol(uid) {
+  //   const docRef = doc(db, `users/${uid}`);
+  //   const docu = await getDoc(docRef);
+  //   const information = docu.data().rol;
+  //   return information;
+  // }
+
+  // function setUserFirebaseRol(userFirebase) {
+  //   getRol(userFirebase.uid).then((rol) => {
+  //     const userData = {
+  //       uid: userFirebase.uid,
+  //       email: userFirebase.email,
+  //       rol: rol,
+  //     };
+  //     setUser(userData);
+  //     setRol(rol);
+  //     console.log(userData);
+  //   });
+  // }
+
+  // console.log(rol);
+
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, async (userFirebase) => {
+  //     console.log(userFirebase);
+  //     if (userFirebase && userFirebase.uid) {
+  //       //funcion final
+  //       if (!user) {
+  //         setUserFirebaseRol(userFirebase);
+  //       }
+  //       // navigate('/registro');
+  //       navigate('/general-home/' + { user: user });
+  //       // <App user={user} />;
+  //       // <GeneralHome user=user />
+  //       // return <>{userFirebase ? <GeneralHome /> : navigate('/login')}</>;
+  //     }
+  //   });
+  //   console.log(user);
+  // }, [navigate]);
 
   async function formLogin(e) {
     e.preventDefault();
@@ -38,7 +72,7 @@ export default function LogIn() {
       [e.target.name]: e.target.value,
     });
 
-    console.log(values);
+    // console.log(values);
   }
 
   return (
