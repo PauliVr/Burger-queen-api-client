@@ -1,5 +1,6 @@
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import LogOut from '../botones/logOut/LogOut';
 import './AdminHome.scss';
 import Home from '../botones/home-admin/Home';
