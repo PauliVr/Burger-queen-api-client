@@ -29,19 +29,19 @@ export const db = getFirestore(app);
 export async function userExist(uid) {
   const docRef = doc(db, 'users', uid);
   const res = await getDoc(docRef);
-  console.log(res);
+  // console.log(res);
   return res.exists();
 }
 
 export async function registerNewUser(uid, name, rol, phone, email, password) {
   try {
     const userCollection = collection(db, 'users');
-    console.log(uid);
-    console.log(name);
-    console.log(rol);
-    console.log(phone);
-    console.log(email);
-    console.log(password);
+    // console.log(uid);
+    // console.log(name);
+    // console.log(rol);
+    // console.log(phone);
+    // console.log(email);
+    // console.log(password);
     await setDoc(doc(userCollection, uid), {
       uid,
       name,
@@ -70,16 +70,16 @@ export default function deleteEmploye(id) {
 }
 
 export async function updateUser(data, uid) {
-  console.log(data);
+  // console.log(data);
   let alert = '';
   try {
     const docRef = doc(db, 'users', uid);
-    console.log(uid);
-    console.log(data.name);
-    console.log(data.rol);
-    console.log(data.phone);
-    console.log(data.email);
-    console.log(data.password);
+    // console.log(uid);
+    // console.log(data.name);
+    // console.log(data.rol);
+    // console.log(data.phone);
+    // console.log(data.email);
+    // console.log(data.password);
     await updateDoc(docRef, {
       uid: uid,
       name: data.name,
