@@ -2,15 +2,15 @@ import deleteEmploye from '../../firebase/Firebase';
 import './EliminarRegistro.scss';
 
 export default function EliminarRegistro(props) {
-  console.log(props.isId);
-  console.log(props.name);
+  // console.log(props.isId);
+  // console.log(props.name);
 
   async function deletedUser(id) {
     if (id) {
       await deleteEmploye(id);
       props.delete(false);
     }
-    console.log('se elimino el usuario con id: ' + id);
+    // console.log('se elimino el usuario con id: ' + id);
   }
 
   return (
@@ -39,7 +39,7 @@ export default function EliminarRegistro(props) {
           className='delete__btn'
           onClick={() => {
             deletedUser(props.isId);
-            console.log(props.isId);
+            // console.log(props.isId);
           }}
         >
           {'eliminar empleado'.toUpperCase()}

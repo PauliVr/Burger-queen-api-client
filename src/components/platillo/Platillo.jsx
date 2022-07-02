@@ -121,7 +121,7 @@ export default function Platillo() {
     setName(name);
   }
 
-  console.log(name, id);
+  // console.log(name, id);
 
   function isEditing(newValues) {
     setDataToEdit(newValues);

@@ -50,7 +50,7 @@ export default function Registro() {
     setName(name);
   }
 
-  console.log(name, id);
+  // console.log(name, id);
   /**
    * está función agrega la fata a la variable de estado DataUpdate y se la manda al formulario por props
    * @param {Object} data

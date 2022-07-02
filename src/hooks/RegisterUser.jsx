@@ -103,7 +103,7 @@ const useForm = (callback) => {
       ...values,
       [name]: val,
     });
-    console.log(values);
+    // console.log(values);
   };
 
   const valueChange = (data) => {

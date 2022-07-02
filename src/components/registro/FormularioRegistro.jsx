@@ -11,7 +11,7 @@ export default function FormularioRegistro(props) {
   const { valueChange, handleChange, values, errors, handleSubmit } = useForm(formRegister);
 
   useEffect(() => {
-    console.log(props.data);
+    // console.log(props.data);
     if (props.data) {
       valueChange(props.data);
     }
@@ -19,13 +19,13 @@ export default function FormularioRegistro(props) {
 
   async function formRegister() {
     if (props.data.uid) {
-      console.log(props.data);
+      // console.log(props.data);
       const isEditing = await updateUser(values, props.data.uid);
-      console.log(isEditing);
+      // console.log(isEditing);
     } else {
-      console.log(auth);
-      console.log(values.email);
-      console.log(values.password);
+      // console.log(auth);
+      // console.log(values.email);
+      // console.log(values.password);
       const res = await createUserWithEmailAndPassword(auth, values.email, values.password);
       try {
         await registerNewUser(
@@ -38,12 +38,12 @@ export default function FormularioRegistro(props) {
         );
 
         const registered = await userExist(auth.currentUser.uid);
-        console.log(registered);
+        // console.log(registered);
         if (registered && auth.currentUser.uid) {
           navigate('/registro');
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
   }
