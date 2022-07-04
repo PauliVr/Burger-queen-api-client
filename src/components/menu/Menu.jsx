@@ -14,11 +14,11 @@ import {
 } from '../../reducers/shoppingReducer';
 import { useReducer } from 'react';
 import ProductItem from '../menu/ProductItem';
-import { auth } from '../../firebase/Firebase';
 import Loader from '../loader/Loader';
 import Message from '../loader/Message';
 import Cart from './Cart';
 import { TYPES } from '../../actions/shoppingActions';
+import { userFirebaseName } from '../../router/PrivateRoutes';
 
 const newDate = () => {
   let today = new Date();
@@ -44,9 +44,11 @@ const newDate = () => {
   // setDate(registerDay);
   return registerDay;
 };
-
 const date = newDate();
 // console.log(newDate());
+
+//error de campos en la orden
+let errorInfoOrder;
 
 export default function Menu() {
   const [db, setDb] = useState([]);
@@ -63,6 +65,10 @@ export default function Menu() {
   //Manejo de Loaders y errores
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  //manejo de los datos de la orden
+  const [orderInfo, setOrderInfo] = useState({});
+
   // const [count, setCount] = useState(0);
   let api = helpHttp();
   let url = 'http://localhost:5000/products';
@@ -134,7 +140,23 @@ export default function Menu() {
     console.log(string);
   };
 
-  console.log(products);
+  // console.log(products);
+
+  const infoOrder = (event) => {
+    event.persist();
+    const { name } = event.target;
+    const val = event.target.value;
+
+    if (name && val) {
+      setOrderInfo({
+        ...orderInfo,
+        [name]: val,
+      });
+      console.log(orderInfo);
+    } else {
+      return (errorInfoOrder = 'Completa los campos para registrar la orden');
+    }
+  };
 
   return (
     <section className='container__menu'>
@@ -157,6 +179,9 @@ export default function Menu() {
               isClear={clearCart}
               isCart={state.cart}
               isDelFromCart={delFromCart}
+              employe={userFirebaseName}
+              date={date}
+              orderData={orderInfo}
             ></Cart>
           ) : (
             ''
@@ -164,7 +189,10 @@ export default function Menu() {
         </div>
         <div className='menu__info'>
           <h1 className='menu__title--text'>{'nuevo pedido'.toUpperCase()}</h1>
-          <h2 className='menu__info--employe'>{'empleado'.toUpperCase()}</h2>
+          <div className='menu__employeName'>
+            <h2 className='menu__info--employe'>{'empleado'.toUpperCase()}</h2>
+            <p>{userFirebaseName}</p>
+          </div>
           <h3 className='menu__info--date'>{date}</h3>
           <div className='input__group'>
             <label htmlFor='cliente'>{'cliente'.toUpperCase()}</label>
@@ -172,7 +200,8 @@ export default function Menu() {
               className='inputs__group--input'
               type='text'
               id='cliente'
-              onChange={userName}
+              name='clientName'
+              onChange={infoOrder}
               placeholder='Jhon Doe'
             />
           </div>
@@ -184,7 +213,7 @@ export default function Menu() {
               className='inputs__group--options'
               id='table'
               name='tables'
-              onChange={userTable}
+              onChange={infoOrder}
             >
               <option className='options__opt' value='1'>
                 0
