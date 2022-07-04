@@ -9,8 +9,9 @@ import Registro from '../components/registro/Registro';
 import AdminHome from '../components/adminHome/AdminHome';
 import Platillo from '../components/platillo/Platillo';
 import Menu from '../components/menu/Menu';
-import OrderCard from '../components/waiterHome/OrderCard';
 export let userFirebaseName;
+export let waiterId;
+export let information;
 
 const PrivateRoutes = () => {
   const [roleAdmin, setRoleAdmin] = useState(null);
@@ -21,13 +22,13 @@ const PrivateRoutes = () => {
   async function getRol(uid) {
     const docRef = doc(db, `users/${uid}`);
     const docu = await getDoc(docRef);
-    const information = docu.data().rol;
+    information = docu.data().rol;
     userFirebaseName = docu.data().name;
     return information;
   }
-  console.log(userFirebaseName);
 
   function setUserFirebaseRol(userFirebase) {
+    waiterId = userFirebase.uid;
     getRol(userFirebase.uid).then((rol) => {
       const userData = {
         uid: userFirebase.uid,
