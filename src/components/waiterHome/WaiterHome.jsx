@@ -6,16 +6,22 @@ import Loader from '../loader/Loader';
 import Message from '../loader/Message';
 import OrderCard from './OrderCard';
 import './WaiterHome.scss';
+import { information, userFirebaseName } from '../../router/PrivateRoutes';
 
-export default function WaiterHome(props) {
+export default function WaiterHome() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
+  const [employeData, setEmployeData] = useState({});
 
   let api = helpHttp();
   let url = 'http://localhost:5000/orders';
 
   useEffect(() => {
+    setEmployeData({
+      name: userFirebaseName,
+      rol: information,
+    });
     setLoading(true);
     helpHttp()
       .get(url)
@@ -31,6 +37,9 @@ export default function WaiterHome(props) {
       });
   }, [url]);
 
+  const changeOrderState = (orderState) => {
+    console.log(orderState);
+  };
   return (
     <section className='container__home'>
       <article className='bar'>
@@ -45,7 +54,13 @@ export default function WaiterHome(props) {
           {data &&
             data.map((order) => {
               return (
-                <OrderCard key={Math.random().toString(36).slice(2)} isData={order}></OrderCard>
+                <OrderCard
+                  key={Math.random().toString(36).slice(2)}
+                  isData={order}
+                  isEmploye={employeData.name}
+                  isRol={employeData.rol}
+                  isChangeState={changeOrderState}
+                ></OrderCard>
               );
             })}
         </div>
