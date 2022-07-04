@@ -61,6 +61,13 @@
   margin: 20px 30px;
 }
 
+.menu__employeName {
+  display: flex;
+  flex-direction: row;
+  p {
+    margin: 0 15px;
+  }
+}
 .menu__platillos {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
