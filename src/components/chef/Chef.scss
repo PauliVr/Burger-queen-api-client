@@ -1,0 +1,26 @@
+@use '../../Globals.scss';
+
+.container__chef {
+  color: Globals.$color-white;
+  height: 100vh;
+  display: flex;
+}
+
+.chef__orders {
+  width: 92vw;
+
+  &--title {
+    color: Globals.$color-white;
+    margin: 50px 0;
+    font-size: Globals.$title;
+    text-align: center;
+  }
+
+  &--dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    row-gap: 98px;
+    width: 90vw;
+  }
+}
