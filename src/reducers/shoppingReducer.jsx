@@ -30,6 +30,7 @@ export function shoppingReducer(state, action) {
         : {
             ...state,
             cart: [...state.cart, { ...newItem, quantity: 1 }],
+            total: newItem.price,
           };
     }
 
