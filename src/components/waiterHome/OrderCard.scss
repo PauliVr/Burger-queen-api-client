@@ -1,0 +1,118 @@
+@use '../../Globals.scss';
+
+.container__card {
+  background-color: Globals.$color-bar;
+  color: Globals.$color-white;
+  width: 23vw;
+  height: 35vh;
+  border-radius: 35px;
+  margin: 40px;
+
+  position: relative;
+  padding: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 150px;
+    text-align: center;
+    margin: 15px 0;
+    align-self: center;
+    margin-top: 15px;
+  }
+}
+
+.card__info--date {
+  font-weight: 300;
+}
+
+.card__info--client,
+.card__info--employe,
+.card__info--date {
+  font-size: 14px;
+}
+
+.card__status--figure {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 1;
+  top: -28px;
+}
+
+.figure__circle {
+  position: absolute;
+  right: 36px;
+  top: 0;
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+
+  img {
+    width: 40px;
+  }
+}
+
+.figure__rectangle {
+  width: 150px;
+  font-weight: 600;
+  position: absolute;
+  top: 9px;
+  right: -102px;
+  font-size: 15px;
+  padding: 10px 25px;
+  // background-color: #16872f;
+  // box-shadow: 2px 3px 2px 1px #16872f;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  &--text {
+    color: Globals.$color-white;
+  }
+}
+
+.green {
+  background-color: #16872f;
+  box-shadow: 2px 1px 2px 1px #16872f;
+}
+
+.orange {
+  background-color: #d46222;
+  box-shadow: 2px 1px 2px 1px #d46222;
+}
+
+.button__status {
+  background-color: Globals.$color-bar;
+  padding: 15px;
+  width: 190px;
+  margin: 0px 0;
+  border: 2px solid Globals.$color-principal;
+  border-radius: 15px;
+  color: Globals.$color-white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.span {
+  font-weight: 600;
+}
+
+// .button__status:hover {
+//   background-color: Globals.$color-principal;
+//   color: Globals.$color-white;
+//   border: none;
+// }
