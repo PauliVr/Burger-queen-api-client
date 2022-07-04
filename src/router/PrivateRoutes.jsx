@@ -9,7 +9,8 @@ import Registro from '../components/registro/Registro';
 import AdminHome from '../components/adminHome/AdminHome';
 import Platillo from '../components/platillo/Platillo';
 import Menu from '../components/menu/Menu';
-import Cart from '../components/menu/Cart';
+import OrderCard from '../components/waiterHome/OrderCard';
+export let userFirebaseName;
 
 const PrivateRoutes = () => {
   const [roleAdmin, setRoleAdmin] = useState(null);
@@ -21,8 +22,10 @@ const PrivateRoutes = () => {
     const docRef = doc(db, `users/${uid}`);
     const docu = await getDoc(docRef);
     const information = docu.data().rol;
+    userFirebaseName = docu.data().name;
     return information;
   }
+  console.log(userFirebaseName);
 
   function setUserFirebaseRol(userFirebase) {
     getRol(userFirebase.uid).then((rol) => {
@@ -66,10 +69,8 @@ const PrivateRoutes = () => {
   } else if (role === 'waiter') {
     return (
       <Routes>
-        <Route path='/' element={<Menu />} />
-        <Route path='/home' element={<WaiterHome />} />
+        <Route path='/' element={<WaiterHome />} />
         <Route path='/orden' element={<Menu />} />
-        <Route path='/modal' element={<Cart />} />
       </Routes>
     );
   } else if (role === 'chef') {
