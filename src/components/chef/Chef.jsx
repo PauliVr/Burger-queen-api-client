@@ -1,10 +1,59 @@
+import { useEffect, useState } from 'react';
+import { helpHttp } from '../../api/helpHttp';
 import LogOut from '../botones/logOut/LogOut';
-
+import Loader from '../loader/Loader';
+import Message from '../loader/Message';
+import OrderCard from '../waiterHome/OrderCard';
+import './Chef.scss';
+import { information, userFirebaseName } from '../../router/PrivateRoutes';
 export default function Chef() {
+  const [loader, setLoader] = useState(null);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+
+  let api = helpHttp();
+  let url = 'http://localhost:5000/orders';
+
+  useEffect(() => {
+    setLoader(true);
+    helpHttp()
+      .get(url)
+      .then((res) => {
+        if (!res.err) {
+          setData(res);
+          setError(null);
+        } else {
+          setData(null);
+          setError(res);
+        }
+        setLoader(false);
+      });
+  }, [url]);
   return (
-    <section>
-      <h1>Hola Chef</h1>
-      <LogOut></LogOut>
+    <section className='container__chef'>
+      <article className='bar'>
+        <LogOut></LogOut>
+      </article>
+
+      <article className='chef__orders'>
+        <h1 className='chef__orders--title'>{'pedidos actuales'.toUpperCase()}</h1>
+        <div className='chef__orders--dashboard'>
+          {loader && <Loader></Loader>}
+          {error && <Message msg={`Error ${error.status}: ${error.statusText}`}></Message>}
+          {data &&
+            data.map((order) => {
+              return (
+                <OrderCard
+                  key={Math.random().toString(36).slice(2)}
+                  isData={order}
+                  isEmploye = {userFirebaseName}
+                  isRol={information}
+
+                ></OrderCard>
+              );
+            })}
+        </div>
+      </article>
     </section>
   );
 }
