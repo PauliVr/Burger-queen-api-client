@@ -1,6 +1,69 @@
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { helpHttp } from '../../api/helpHttp';
 import './Cart.scss';
-export default function Cart({ open, isClear, isCart, isDelFromCart }) {
-  console.log(isCart);
+
+let acumulador = 0;
+export default function Cart({ open, isClear, isCart, isDelFromCart, employe, date, orderData }) {
+  const { clientName, tables } = orderData;
+
+  const [database, setDatabase] = useState(null); //db
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [total, setTotal] = useState(0);
+
+  let api = helpHttp();
+  let url = 'http://localhost:5000/orders';
+
+  useEffect(() => {
+    setTotal(0);
+    console.log(total);
+    let totalPrice = 0;
+    isCart.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+
+    setTotal(totalPrice.toFixed(2));
+    console.log(total);
+
+    setData({
+      id: Date.now().toString(),
+      employe: employe,
+      date: date,
+      client: clientName,
+      table: tables,
+      order: isCart,
+      total: totalPrice,
+      state: 'preparando',
+    });
+
+    console.log(isCart);
+  }, [url, isCart]);
+
+  const createData = (db) => {
+    let options = { body: db, headers: { 'content-type': 'application/json' } };
+
+    api.post(url, options).then((res) => {
+      if (!res.err) {
+        setDatabase([...database, res]);
+      } else {
+        setError(res);
+      }
+    });
+  };
+
+  // const totalMount = (cart) => {
+  //   console.log(cart);
+  //   const price = cart.forEach((item) => (totalPrice = item.price * item.quantity));
+  //   console.log(price);
+  //   totalPrice = Number(cart.price) + Number(cart.quantity);
+  //   acumulador = acumulador + totalPrice;
+  //   console.log(acumulador);
+  //   // setTotal(...total, acumulador);
+  // };
+  // totalMount(isCart);
+  // // console.log(total);
+
   return (
     <section className='container__order'>
       <div className='close'>
@@ -18,10 +81,10 @@ export default function Cart({ open, isClear, isCart, isDelFromCart }) {
 
       <div className='order'>
         <article className='order__info'>
-          <h4>{'empleado:'.toUpperCase()}</h4>
-          <h4>{'fecha'.toUpperCase()}</h4>
-          <h4>{'mesa: '.toUpperCase()}</h4>
-          <h4>{'cliente: '.toUpperCase()}</h4>
+          <h4>{'empleado: '.toUpperCase() + employe}</h4>
+          <h4>{'fecha: '.toUpperCase() + date}</h4>
+          <h4>{'mesa: '.toUpperCase() + tables}</h4>
+          <h4>{'cliente: '.toUpperCase() + clientName}</h4>
         </article>
         <div className='order__dishes'>
           <table className='order__table'>
@@ -63,7 +126,7 @@ export default function Cart({ open, isClear, isCart, isDelFromCart }) {
       </div>
       <div className='total'>
         <h2 className='total__title'>{'total'.toUpperCase()}</h2>
-        <h2 className='total__price'>$498.90</h2>
+        <h2 className='total__price'>{total}</h2>
       </div>
       <div className='prepare'>
         <button
@@ -78,7 +141,8 @@ export default function Cart({ open, isClear, isCart, isDelFromCart }) {
         <button
           className='prepare__btn--clear'
           onClick={() => {
-            console.log('preparando...');
+            console.log(data);
+            createData(data);
           }}
         >
           {'preparar pedido'.toUpperCase()}

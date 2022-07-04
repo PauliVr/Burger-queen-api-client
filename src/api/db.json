@@ -243,12 +243,80 @@
   ],
   "orders": [
     {
-      "id": "",
-      "employe": "Paulette Villegas",
-      "date": "09/06/2022",
-      "customer-name": "Zed Benedict",
-      "table": 5,
-      "order": []
+      "id": "1656871471854",
+      "employe": "Allan Flores",
+      "date": "3/Julio/2022 13:2:15 hrs",
+      "client": "Paulette Villegas",
+      "table": "3",
+      "order": [
+        {
+          "id": "1655399281140",
+          "name": "Hamburguesa de pollo",
+          "type": "Comida",
+          "description": "Hamburguesa de pollo, aderezo de quesos, lechuga, tomate y cebolla",
+          "price": 89.9,
+          "img": "/assets/imgs/H-pollo.svg",
+          "quantity": 2
+        }
+      ],
+      "total": 179.8,
+      "state": "preparando"
+    },
+    {
+      "id": "1656894567950",
+      "employe": "Allan Flores",
+      "date": "3/Julio/2022 19:28:41 hrs",
+      "client": "Crystal Brook",
+      "table": "3",
+      "order": [
+        {
+          "id": "1655399552758",
+          "name": "Coca-cola",
+          "type": "Comida",
+          "description": "Coca-cola de lata de 500ml",
+          "price": 29.9,
+          "img": "/assets/imgs/S-cocacola.svg",
+          "quantity": 2
+        },
+        {
+          "id": "1655399432866",
+          "name": "Papas a la francesa",
+          "type": "Comida",
+          "description": "Papas fritas acompañadas con salsa de tomate ",
+          "price": 69.9,
+          "img": "/assets/imgs/P-francesa.svg",
+          "quantity": 1
+        },
+        {
+          "id": "1655399311341",
+          "name": "Hamburguesa buffalo",
+          "type": "Comida",
+          "description": "Hamburguesa de pollo en salsa buffalo, lechuga, tomate, cebolla y aderezo chipotle",
+          "price": 99.9,
+          "img": "/assets/imgs/H-buffalo.svg",
+          "quantity": 1
+        },
+        {
+          "id": "1655399345068",
+          "name": "Hamburguesa con tocino",
+          "type": "Comida",
+          "description": "Hamburguesa de carne, rebanadas de tocino, queso amarillo derretido,  pepinillos, lechuga, tomate y papas fritas",
+          "price": 99.9,
+          "img": "/assets/imgs/H-tocino.svg",
+          "quantity": 1
+        },
+        {
+          "id": "1655399401002",
+          "name": "Aros de cebolla",
+          "type": "Comida",
+          "description": "Aros de cebolla, bañados en harina y fritos, ensalada con aderezo",
+          "price": 69.9,
+          "img": "/assets/imgs/A-cebolla.svg",
+          "quantity": 1
+        }
+      ],
+      "total": 399.4,
+      "state": "preparando"
     }
   ]
 }
