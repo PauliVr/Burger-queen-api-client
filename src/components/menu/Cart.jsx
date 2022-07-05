@@ -13,7 +13,7 @@ export default function Cart({ open, isClear, isCart, isDelFromCart, employe, da
   const [total, setTotal] = useState(0);
 
   let api = helpHttp();
-  let url = 'http://localhost:5000/orders';
+  let url = 'https://burger-queen-api-pauli.herokuapp.com/orders';
 
   useEffect(() => {
     setTotal(0);
