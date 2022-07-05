@@ -12,7 +12,7 @@ export default function Chef() {
   const [data, setData] = useState(null);
 
   let api = helpHttp();
-  let url = 'http://localhost:5000/orders';
+  let url = 'https://burger-queen-api-pauli.herokuapp.com/orders';
 
   useEffect(() => {
     setLoader(true);
@@ -29,6 +29,21 @@ export default function Chef() {
         setLoader(false);
       });
   }, [url]);
+
+  const updateData = (db) => {
+    let endpoint = `${url}/${db.id}`;
+    let options = { body: db, headers: { 'content-type': 'application/json' } };
+
+    api.put(endpoint, options).then((res) => {
+      if (!res.err) {
+        let newData = data.map((el) => (el.id === db.id ? db : el));
+        setData(newData);
+      } else {
+        setError(res);
+      }
+    });
+  };
+
   return (
     <section className='container__chef'>
       <article className='bar'>
@@ -46,9 +61,9 @@ export default function Chef() {
                 <OrderCard
                   key={Math.random().toString(36).slice(2)}
                   isData={order}
-                  isEmploye = {userFirebaseName}
+                  isUpdate={updateData}
+                  isEmploye={userFirebaseName}
                   isRol={information}
-
                 ></OrderCard>
               );
             })}
