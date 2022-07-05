@@ -1,0 +1,122 @@
+@use '../../Globals.scss';
+
+.resume {
+  background-color: rgba(31, 29, 43, 0.94);
+  width: 50vw;
+  height: 100vh;
+  // padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: center;
+  color: Globals.$color-white;
+  gap: 32px;
+  z-index: 5;
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // font-size: Globals.$title;
+    font-size: 32px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+
+    .button__close {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__info {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__content {
+    width: 80%;
+    margin: 0 auto;
+    max-height: 368px;
+    overflow-y: scroll;
+  }
+
+  &__subtitle {
+  }
+
+  &__item-list {
+    padding: 0 0 0 16px;
+    margin: 30px 0;
+    max-height: 180px;
+    overflow-y: scroll;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__img {
+    max-height: 40px;
+    margin-right: 8px;
+  }
+
+  &__total {
+    p {
+      color: Globals.$color-principal;
+      font-weight: 600;
+    }
+    span {
+      color: Globals.$color-white;
+    }
+  }
+}
+
+.payment {
+  width: 80%;
+  margin: 0 auto;
+
+  &__title {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &__methods {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  &__button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: Globals.$color-white;
+
+    &--card {
+      background-color: Globals.$color-principal;
+    }
+
+    &--cash {
+      background-color: #326cb1;
+    }
+  }
+}
