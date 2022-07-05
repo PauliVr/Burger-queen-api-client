@@ -2,6 +2,15 @@
 
 .container__home {
   color: Globals.$color-white;
+  min-height: 100vh;
+  display: flex;
+}
+
+.container__resume {
+  position: absolute;
+  right: 0;
+  position: fixed;
+  z-index: 2;
 }
 
 .orders {
