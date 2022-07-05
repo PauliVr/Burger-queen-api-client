@@ -10,8 +10,6 @@ import AdminHome from '../components/adminHome/AdminHome';
 import Platillo from '../components/platillo/Platillo';
 import Menu from '../components/menu/Menu';
 import OrderResume from '../components/waiterHome/OrderResume';
-import Effective from '../components/waiterHome/Effective';
-import CreditCard from '../components/waiterHome/CreditCard';
 
 export let userFirebaseName;
 export let waiterId;
@@ -77,8 +75,6 @@ const PrivateRoutes = () => {
         <Route path='/' element={<WaiterHome />} />
         <Route path='/orden' element={<Menu />} />
         <Route path='/resumen' element={<OrderResume />}></Route>
-        {/* <Route path='/efectivo' element={<Effective />}></Route>
-        <Route path='/tarjeta' element={<CreditCard />}></Route> */}
       </Routes>
     );
   } else if (role === 'chef') {
