@@ -3,7 +3,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import OrderResume from './OrderResume';
 
-export default function OrderCard({ isData, isRol, isEmploye, isChangeState, isUpdate, setData }) {
+export default function OrderCard({
+  isData,
+  isRol,
+  isEmploye,
+  isChangeState,
+  isUpdate,
+  setData,
+  isCard,
+  isCash,
+}) {
   const { id, employe, date, client, table, order, total, state } = isData;
   const [rol, setRol] = useState('');
   const [newData, setNewData] = useState(null);
@@ -14,6 +23,8 @@ export default function OrderCard({ isData, isRol, isEmploye, isChangeState, isU
     setRol(isRol);
     setEmployeName(isEmploye);
   }, [rol, employeName]);
+
+  console.log(isData);
 
   function updateOrder(newState) {
     // state = newState;
@@ -31,11 +42,12 @@ export default function OrderCard({ isData, isRol, isEmploye, isChangeState, isU
     console.log(editedData);
   }
 
-  function changeStateData(open, data) {
+  function changeStateData(open, data, card, cash) {
     console.log(data);
     isChangeState(open);
-
     setData(data);
+    isCard(card);
+    isCash(cash);
   }
 
   return (

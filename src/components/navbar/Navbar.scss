@@ -1,0 +1,56 @@
+@use '../../Globals.scss';
+
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: Globals.$color-bar;
+  width: 8%;
+  height: 100vh;
+
+  &__list {
+    margin-top: 64px;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+  }
+
+  &__btn--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: Globals.$color-fondo;
+    height: 85px;
+    width: 90px;
+    margin-left: 7px;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+
+  &__btn--active .btn__home,
+  &__btn--active .btn__empleado,
+  &__btn--active .btn__platillos,
+  &__btn--active .btn__chart {
+    height: 66px;
+    width: 66px;
+    background-color: Globals.$color-principal;
+    border-radius: 12px;
+  }
+
+  &__btn--add {
+    width: 100px;
+    position: fixed;
+    top: 0;
+  }
+
+  &__btn--log {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 18px;
+  }
+}

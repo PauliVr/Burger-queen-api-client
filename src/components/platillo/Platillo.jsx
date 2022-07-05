@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import { helpHttp } from '../../api/helpHttp';
 import AgregarPlatillo from '../botones/agregar/AgregarPlatillo';
-import Chart from '../botones/charts/Chart';
-import Empleados from '../botones/crear empleados/Empleados';
 import Delete from '../botones/delete/Delete';
 import Edit from '../botones/editEmploye/Edit';
-import Home from '../botones/home-admin/Home';
-import LogOut from '../botones/logOut/LogOut';
-import Platillos from '../botones/platillos/Platillos';
 import Loader from '../loader/Loader';
 import Message from '../loader/Message';
 import EliminarPlatillo from './EliminarPlatillo';
 import FormularioPlatillo from './FormularioPlatillo';
+import { Navbar } from '../navbar/Navbar';
 import './Platillo.scss';
 
 export default function Platillo() {
@@ -129,19 +125,13 @@ export default function Platillo() {
 
   // console.log(dataToEdit);
 
+  function clearDataToEdit() {
+    setDataToEdit(null);
+  }
+
   return (
     <section className='container__platillos'>
-      <div className='platillos__bar'>
-        <div className='platillos__bar--opciones'>
-          <Home />
-          <Empleados />
-          <Platillos />
-          <Chart />
-        </div>
-        <div className='platillos__bar--log'>
-          <LogOut />
-        </div>
-      </div>
+      <Navbar active='platillos' type='admin'></Navbar>
       <div className='platillos'>
         <div className='platillos__register'>
           {register === true ? (
@@ -164,7 +154,7 @@ export default function Platillo() {
         </div>
         <h1 className='platillos__title'>{'administrar platillos'.toUpperCase()}</h1>
         <div className='platillos__info'>
-          <AgregarPlatillo register={isRegister}></AgregarPlatillo>
+          <AgregarPlatillo register={isRegister} clearData={clearDataToEdit}></AgregarPlatillo>
 
           {loading && <Loader></Loader>}
           {error && <Message msg={`Error ${error.status}: ${error.statusText}`}></Message>}

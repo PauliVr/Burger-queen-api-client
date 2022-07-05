@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { helpHttp } from '../../api/helpHttp';
-import LogOut from '../botones/logOut/LogOut';
+import { Navbar } from '../navbar/Navbar';
 import Loader from '../loader/Loader';
 import Message from '../loader/Message';
 import OrderCard from '../waiterHome/OrderCard';
@@ -20,7 +20,11 @@ export default function Chef() {
       .get(url)
       .then((res) => {
         if (!res.err) {
-          setData(res);
+          const chefOrders = res.filter((order) => {
+            console.log(order);
+            return order.state !== 'pagado';
+          });
+          setData(chefOrders);
           setError(null);
         } else {
           setData(null);
@@ -46,9 +50,7 @@ export default function Chef() {
 
   return (
     <section className='container__chef'>
-      <article className='bar'>
-        <LogOut></LogOut>
-      </article>
+      <Navbar active='home' type='chef'></Navbar>
 
       <article className='chef__orders'>
         <h1 className='chef__orders--title'>{'pedidos actuales'.toUpperCase()}</h1>

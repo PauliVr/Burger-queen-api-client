@@ -19,9 +19,12 @@
 }
 
 .form {
+  width: 85%;
+  margin: 0 auto;
   &__title {
     margin: 15px 0 60px 0;
     font-size: 32px;
+    text-align: center;
   }
 }
 
@@ -29,32 +32,62 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 42vw;
-  height: 63vh;
+  gap: 24px;
 }
 
 .group {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: 24px;
 
-  &--label {
-    margin: 10px 0px;
+  &__label {
+    margin: 10px 15px;
     width: 20%;
     text-align: left;
     font-weight: 600;
+    font-size: 15px;
     letter-spacing: 0.5px;
+
+    &--image {
+      padding: 8px 24px;
+      margin-right: 20px;
+      border-radius: 6px;
+      border: 1px solid Globals.$color-principal;
+      color: Globals.$color-white;
+      font-size: 15px;
+      font-weight: 600;
+      align-self: center;
+    }
   }
 
   &__input {
     width: 70%;
     border-radius: 25px;
     padding: 10px 25px;
+    border: none;
+
+    &--price {
+      max-width: 140px;
+    }
+
+    &--image {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: -1;
+    }
   }
 
   &--radio {
     margin: 0 14px;
+  }
+
+  &--image {
+    font-size: 14px;
+    img {
+      max-height: 50px;
+    }
   }
 }
 

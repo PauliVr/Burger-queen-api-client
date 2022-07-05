@@ -1,5 +1,4 @@
 import './Registro.scss';
-import LogOut from '../botones/logOut/LogOut';
 import Agregar from '../botones/agregar/Agregar';
 import Delete from '../botones/delete/Delete';
 import Edit from '../botones/editEmploye/Edit';
@@ -8,10 +7,7 @@ import { useEffect } from 'react';
 import FormularioRegistro from './FormularioRegistro';
 import EliminarRegistro from './EliminarRegistro';
 import { getEmploye } from '../../firebase/Firebase.js';
-import Home from '../botones/home-admin/Home';
-import Empleados from '../botones/crear empleados/Empleados';
-import Platillos from '../botones/platillos/Platillos';
-import Chart from '../botones/charts/Chart';
+import { Navbar } from '../navbar/Navbar';
 
 export default function Registro() {
   const [register, setRegister] = useState(false);
@@ -61,20 +57,10 @@ export default function Registro() {
 
   return (
     <section className='container_dashboard'>
-      <div className='bar'>
-        <div className='bar__btn--opciones'>
-          <Home />
-          <Empleados />
-          <Platillos />
-          <Chart />
-        </div>
-        <div className='bar__btn--log'>
-          <LogOut></LogOut>
-        </div>
-      </div>
+      <Navbar active='empleados' type='admin'></Navbar>
       <div className='dashboard'>
         <div className='container__register'>
-          {isDelete === true ? <EliminarRegistro delete={onDelete}  name={name} isId={id}  /> : ''}
+          {isDelete === true ? <EliminarRegistro delete={onDelete} name={name} isId={id} /> : ''}
           {register === true ? <FormularioRegistro register={isRegister} data={dataUpdate} /> : ''}
         </div>
         <h1 className='dashboard__title--text'>{'administración de empleados'.toUpperCase()}</h1>
@@ -103,12 +89,7 @@ export default function Registro() {
                       <td className='table__user--text'>{user.password}</td>
                       <td className='table__user--btns'>
                         <Delete delete={onDelete} isId={isId} id={user.uid} name={user.name} />
-                        <Edit
-                          register={isRegister}
-                          isEdite={assignData}
-                          data={user}
-                          isId={isId}
-                        />
+                        <Edit register={isRegister} isEdite={assignData} data={user} isId={isId} />
                       </td>
                     </tr>
                   );

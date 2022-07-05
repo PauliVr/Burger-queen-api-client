@@ -6,6 +6,7 @@ export default function AgregarPlatillo(props) {
       className='btn__agregar'
       onClick={() => {
         props.register(true);
+        props.clearData();
       }}
     >
       <p className='btn__title'>{'Agregar platillo'.toUpperCase()}</p>

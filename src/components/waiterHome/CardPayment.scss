@@ -1,0 +1,115 @@
+@use '../../Globals.scss';
+
+.cardPayment {
+  $self: &;
+  background-color: rgba(31, 29, 43, 0.94);
+  width: 50vw;
+  height: 100vh;
+  // padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: center;
+  color: Globals.$color-white;
+  // gap: 32px;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 32px;
+
+    .button__close {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    #{$self}__title {
+      font-size: 32px;
+    }
+  }
+
+  &__image {
+    text-align: center;
+    img {
+      max-height: 200px;
+    }
+  }
+
+  &__card {
+    width: 70%;
+    margin: 0 auto 32px auto;
+    #{$self}__form {
+      background-color: rgba(Globals.$color-white, 0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 16px;
+      padding: 24px 32px 16px 32px;
+      box-shadow: 0 0 5px 5px rgba(Globals.$color-white, 0.3);
+    }
+
+    #{$self}__group {
+      margin-bottom: 16px;
+      &:last-of-type {
+        margin-bottom: 0;
+        text-align: right;
+        margin-top: 24px;
+      }
+
+      button {
+        background-color: Globals.$color-principal;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: Globals.$color-white;
+      }
+    }
+
+    #{$self}__label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .group__input {
+      width: 100%;
+      font-weight: 600;
+      font-size: 16px;
+      opacity: 0.8;
+      outline: none;
+      border: none;
+    }
+  }
+
+  &__successPayment {
+    text-align: center;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
+
+    &--hidden {
+      opacity: 0;
+    }
+    &--show {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    text-align: center;
+    margin-top: 32px;
+    button {
+      background-color: Globals.$color-principal;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      color: Globals.$color-white;
+      font-size: 16px;
+    }
+  }
+}

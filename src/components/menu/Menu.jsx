@@ -1,9 +1,5 @@
 import './Menu.scss';
-import LogOut from '../botones/logOut/LogOut';
-import Home from '../botones/home-admin/Home';
-import Empleados from '../botones/crear empleados/Empleados';
-import Platillos from '../botones/platillos/Platillos';
-import Chart from '../botones/charts/Chart';
+import { Navbar } from '../navbar/Navbar';
 import { helpHttp } from '../../api/helpHttp';
 import { useEffect, useState } from 'react';
 import Order from '../botones/orden/Order';
@@ -160,17 +156,7 @@ export default function Menu() {
 
   return (
     <section className='container__menu'>
-      <div className='bar'>
-        <div className='bar__btns--opc'>
-          <Home />
-          <Empleados />
-          <Platillos />
-          <Chart />
-        </div>
-        <div className='bar__btn--log'>
-          <LogOut></LogOut>
-        </div>
-      </div>
+      <Navbar active='platillos' type='mesero'></Navbar>
       <div className='menu'>
         <div className='menu__cart'>
           {open === true ? (
@@ -188,80 +174,87 @@ export default function Menu() {
           )}
         </div>
         <div className='menu__info'>
-          <h1 className='menu__title--text'>{'nuevo pedido'.toUpperCase()}</h1>
-          <div className='menu__employeName'>
-            <h2 className='menu__info--employe'>{'empleado'.toUpperCase()}</h2>
-            <p>{userFirebaseName}</p>
-          </div>
-          <h3 className='menu__info--date'>{date}</h3>
-          <div className='input__group'>
-            <label htmlFor='cliente'>{'cliente'.toUpperCase()}</label>
-            <input
-              className='inputs__group--input'
-              type='text'
-              id='cliente'
-              name='clientName'
-              onChange={infoOrder}
-              placeholder='Jhon Doe'
-            />
-          </div>
-          <div className='inputs__group'>
-            <label className='menu__info--forms' htmlFor='table'>
-              {'mesa'.toUpperCase()}
-            </label>
-            <select
-              className='inputs__group--options'
-              id='table'
-              name='tables'
-              onChange={infoOrder}
-            >
-              <option className='options__opt' value='1'>
-                0
-              </option>
-              <option className='options__opt' value='1'>
-                1
-              </option>
-              <option className='options__opt' value='2'>
-                2
-              </option>
-              <option className='options__opt' value='3'>
-                3
-              </option>
-              <option className='options__opt' value='4'>
-                4
-              </option>
-              <option className='options__opt' value='5'>
-                5
-              </option>
-              <option className='options__opt' value='6'>
-                6
-              </option>
-              <option className='options__opt' value='7'>
-                7
-              </option>
-              <option className='options__opt' value='8'>
-                8
-              </option>
-              <option className='options__opt' value='9'>
-                9
-              </option>
-              <option className='options__opt' value='10'>
-                10
-              </option>
-            </select>
-          </div>
-          <div className='btn__container'>
-            <div className='btn__group'>
-              <h3>{'menú'.toUpperCase()}</h3>
-              <button className='btn__group--button' onClick={() => filterData('Desayuno')}>
-                {'desayuno'.toUpperCase()}
-              </button>
-              <button className='btn__group--button' onClick={() => filterData('Comida')}>
-                {'comida'.toUpperCase()}
-              </button>
+          <div className='menu__order'>
+            <h1 className='menu__title--text'>{'nuevo pedido'.toUpperCase()}</h1>
+            <div className={`menu__order-info ${open ? 'collapsed' : 'expanded'}`}>
+              <div>
+                <h2 className='menu__info--employe'>{'empleado'.toUpperCase()}</h2>
+                <h3 className='menu__info--date'>{date}</h3>
+              </div>
+              <div>
+                <div className='inputs__group'>
+                  <label htmlFor='cliente' className='menu__info--forms'>
+                    {'cliente'.toUpperCase()}
+                  </label>
+                  <input
+                    className='inputs__group--input'
+                    type='text'
+                    id='cliente'
+                    name='clientName'
+                    onChange={infoOrder}
+                    placeholder='Jhon Doe'
+                  />
+                </div>
+                <div className='inputs__group'>
+                  <label className='menu__info--forms' htmlFor='table'>
+                    {'mesa'.toUpperCase()}
+                  </label>
+                  <select
+                    className='inputs__group--options'
+                    id='table'
+                    name='tables'
+                    onChange={infoOrder}
+                  >
+                    <option className='options__opt' value='1'>
+                      0
+                    </option>
+                    <option className='options__opt' value='1'>
+                      1
+                    </option>
+                    <option className='options__opt' value='2'>
+                      2
+                    </option>
+                    <option className='options__opt' value='3'>
+                      3
+                    </option>
+                    <option className='options__opt' value='4'>
+                      4
+                    </option>
+                    <option className='options__opt' value='5'>
+                      5
+                    </option>
+                    <option className='options__opt' value='6'>
+                      6
+                    </option>
+                    <option className='options__opt' value='7'>
+                      7
+                    </option>
+                    <option className='options__opt' value='8'>
+                      8
+                    </option>
+                    <option className='options__opt' value='9'>
+                      9
+                    </option>
+                    <option className='options__opt' value='10'>
+                      10
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div className='btn__list'>
-              <Order open={isOpen}></Order>
+            <div className='btn__container'>
+              <div className='btn__group'>
+                <h3>{'menú'.toUpperCase()}</h3>
+                <button className='btn__group--button' onClick={() => filterData('Desayuno')}>
+                  {'desayuno'.toUpperCase()}
+                </button>
+                <button className='btn__group--button' onClick={() => filterData('Comida')}>
+                  {'comida'.toUpperCase()}
+                </button>
+              </div>
+              <div className='btn__list'>
+                <Order open={isOpen}></Order>
+              </div>
             </div>
           </div>
         </div>

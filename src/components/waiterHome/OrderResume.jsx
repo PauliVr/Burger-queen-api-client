@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import '../waiterHome/OrderResume.scss';
 
-export default function OrderResume({ isChangeState, isData }) {
-  console.log(isData);
+export default function OrderResume({ isChangeState, isData, isCard, isCash }) {
   const { client, date, employe, id, order, state, table, total } = isData;
   const [data, setData] = useState(null);
   useEffect(() => {
     setData(order);
     console.log(data);
   }, [data]);
+
   return (
     <section className='resume'>
       <div className='resume__close'>
@@ -40,10 +40,17 @@ export default function OrderResume({ isChangeState, isData }) {
         {data &&
           data.map((product) => {
             return (
-              <div className='resume__item-list'>
+              <div className='resume__item-list' key={Math.random().toString(36).slice(2)}>
                 <div className='resume__item'>
                   <img className='resume__img' src={product.img} alt='platillo' />
-                  <p className='resume__items--plate'>{product.name.toUpperCase()}</p>
+                  <p className='resume__items--plate'>
+                    {product.quantity +
+                      ' ' +
+                      product.name.toUpperCase() +
+                      ' ' +
+                      '$' +
+                      product.price * product.quantity}
+                  </p>
                 </div>
               </div>
             );
@@ -51,7 +58,7 @@ export default function OrderResume({ isChangeState, isData }) {
 
         <div className='resume__total'>
           <p>
-            TOTAL <span>${total}</span>
+            TOTAL <span>${total.toFixed(2)}</span>
           </p>
         </div>
       </section>
@@ -60,8 +67,12 @@ export default function OrderResume({ isChangeState, isData }) {
         <h3 className='payment__title'>SELECCIONA EL MÉTODO DE PAGO</h3>
 
         <div className='payment__methods'>
-          <button className='payment__button payment__button--card'>PAGO CON TARJETA</button>
-          <button className='payment__button payment__button--cash'>PAGO EN EFECTIVO</button>
+          {/* <button className='payment__button payment__button--card' onClick={() => isCard(true)}>
+            PAGO CON TARJETA
+          </button> */}
+          <button className='payment__button payment__button--cash' onClick={() => isCash(true)}>
+            PAGO EN EFECTIVO
+          </button>
         </div>
       </div>
     </section>

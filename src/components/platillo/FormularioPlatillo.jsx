@@ -6,7 +6,7 @@ const initialForm = {
   name: '',
   type: '',
   description: '',
-  price: 0,
+  price: '',
   img: '',
 };
 // const id = Math.random().toString(36).slice(2);
@@ -20,6 +20,8 @@ export default function FormularioPlatillo({
   setDataToEdit,
 }) {
   const [form, setForm] = useState(initialForm);
+  const [image, setImage] = useState(null);
+  const [imageURLs, setImageURLs] = useState(null);
 
   // console.log(isId);
   useEffect(() => {
@@ -29,6 +31,13 @@ export default function FormularioPlatillo({
       setForm(initialForm);
     }
   }, [dataToEdit]);
+
+  useEffect(() => {
+    if (image) {
+      console.log(URL.createObjectURL(image));
+      setImageURLs(URL.createObjectURL(image));
+    }
+  }, [image]);
 
   const handleChange = (e) => {
     setForm({
@@ -60,6 +69,15 @@ export default function FormularioPlatillo({
     setForm(initialForm);
     setDataToEdit(null);
   };
+
+  function onImageChange(e) {
+    console.log(e.target.files[0]);
+    setForm({
+      ...form,
+      [e.target.name]: `/assets/imgs/${e.target.files[0].name}`,
+    });
+    setImage(e.target.files[0]);
+  }
 
   return (
     <section className='container__form'>
@@ -124,7 +142,9 @@ export default function FormularioPlatillo({
           </div>
 
           <div className='group'>
-            <label htmlFor='description'>{'descripción'.toUpperCase()}</label>
+            <label htmlFor='description' className='group__label'>
+              {'descripción'.toUpperCase()}
+            </label>
             <input
               type='text'
               name='description'
@@ -136,26 +156,39 @@ export default function FormularioPlatillo({
           </div>
 
           <div className='group'>
-            <label htmlFor='precio'>{'precio'.toUpperCase()}</label>
+            <label htmlFor='precio' className='group__label'>
+              {'precio'.toUpperCase()}
+            </label>
             <input
               type='number'
               name='price'
               value={form.price}
-              className='group__input'
+              className='group__input group__input--price'
               placeholder='69.90'
               onChange={handleChange}
             />
           </div>
 
-          <div className='group'>
-            <label htmlFor='img'>{'imagen'.toUpperCase()}</label>
+          <div className='group group--image'>
+            <p className='group__label'>{'imagen'.toUpperCase()}</p>
+            <label className='group__label--image' htmlFor='img'>
+              ELIGE LA IMAGEN
+            </label>
             <input
-              type='text'
+              id='img'
+              type='file'
+              accept='image/*'
               name='img'
-              className='group__input'
-              value={form.img}
-              onChange={handleChange}
+              className='group__input group__input--image'
+              onChange={onImageChange}
             />
+            {imageURLs ? (
+              <img src={imageURLs} alt='uploaded' />
+            ) : form.img ? (
+              <img src={form.img} alt='uploaded' />
+            ) : (
+              'No hay Imagen'
+            )}
           </div>
           <button className='btn--register'>{'registrar platillo'.toUpperCase()}</button>
         </form>

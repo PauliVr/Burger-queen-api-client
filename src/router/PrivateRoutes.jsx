@@ -74,7 +74,6 @@ const PrivateRoutes = () => {
       <Routes>
         <Route path='/' element={<WaiterHome />} />
         <Route path='/orden' element={<Menu />} />
-        <Route path='/resumen' element={<OrderResume />}></Route>
       </Routes>
     );
   } else if (role === 'chef') {

@@ -316,7 +316,45 @@
         }
       ],
       "total": 399.4,
-      "state": "preparando"
+      "state": "listo"
+    },
+    {
+      "id": "1656967285314",
+      "employe": "Allan Flores",
+      "date": "4/Julio/2022 15:40:50 hrs",
+      "client": "Victor Benedict",
+      "table": "8",
+      "order": [
+        {
+          "id": "1655399552758",
+          "name": "Coca-cola",
+          "type": "Comida",
+          "description": "Coca-cola de lata de 500ml",
+          "price": 29.9,
+          "img": "/assets/imgs/S-cocacola.svg",
+          "quantity": 1
+        },
+        {
+          "id": "1655399466685",
+          "name": "Papas gajo",
+          "type": "Comida",
+          "description": "Papas cortadas en Gajos con queso cheddar y aderezo",
+          "price": 79.9,
+          "img": "/assets/imgs/P-gajo.svg",
+          "quantity": 1
+        },
+        {
+          "id": "1655399311341",
+          "name": "Hamburguesa buffalo",
+          "type": "Comida",
+          "description": "Hamburguesa de pollo en salsa buffalo, lechuga, tomate, cebolla y aderezo chipotle",
+          "price": 99.9,
+          "img": "/assets/imgs/H-buffalo.svg",
+          "quantity": 2
+        }
+      ],
+      "total": 309.6,
+      "state": "listo"
     }
   ]
 }

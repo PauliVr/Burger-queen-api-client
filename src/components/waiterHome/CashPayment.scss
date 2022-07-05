@@ -1,0 +1,119 @@
+@use '../../Globals.scss';
+
+.cashPayment {
+  $self: &;
+  background-color: rgba(31, 29, 43, 0.94);
+  width: 50vw;
+  height: 100vh;
+  // padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-content: center;
+  color: Globals.$color-white;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 32px;
+
+    .button__close {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    #{ $self }__title {
+      font-size: 32px;
+    }
+  }
+
+  &__image {
+    text-align: center;
+    margin-bottom: 24px;
+    img {
+      max-height: 200px;
+    }
+  }
+
+  &__info {
+    width: 60%;
+    margin: 0 auto 32px auto;
+
+    #{$self}__group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+
+      &:nth-child(1) {
+        margin-bottom: 64px;
+      }
+
+      &:last-of-type {
+        margin-top: 32px;
+        justify-content: end;
+      }
+
+      button {
+        align-self: flex-end;
+        background-color: Globals.$color-principal;
+        border: none;
+        padding: 8px 24px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: Globals.$color-white;
+      }
+    }
+
+    #{$self}__label {
+      flex-basis: 70%;
+      font-size: 14px;
+    }
+
+    .inputs__group--input {
+      flex-basis: 30%;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+  }
+
+  &__change {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    label {
+      flex-basis: 70%;
+    }
+
+    input {
+      width: 100%;
+      flex-basis: 30%;
+      text-align: center;
+      color: Globals.$color-principal;
+      font-weight: 600;
+      border: none;
+    }
+  }
+
+  &__button {
+    text-align: center;
+    margin-top: 32px;
+    button {
+      background-color: Globals.$color-principal;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      color: Globals.$color-white;
+      font-size: 16px;
+    }
+  }
+}
