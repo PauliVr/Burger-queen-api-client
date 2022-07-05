@@ -7,15 +7,18 @@ import Message from '../loader/Message';
 import OrderCard from './OrderCard';
 import './WaiterHome.scss';
 import { information, userFirebaseName } from '../../router/PrivateRoutes';
+import OrderResume from './OrderResume';
 
 export default function WaiterHome() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
   const [employeData, setEmployeData] = useState({});
+  const [open, setOpen] = useState(false);
+  const [dataResume, setDataResume] = useState(null);
 
   let api = helpHttp();
-  let url = 'http://localhost:5000/orders';
+  let url = 'https://burger-queen-api-pauli.herokuapp.com/orders';
 
   useEffect(() => {
     setEmployeData({
@@ -38,8 +41,14 @@ export default function WaiterHome() {
   }, [url]);
 
   const changeOrderState = (orderState) => {
-    console.log(orderState);
+    setOpen(orderState);
   };
+
+  const dataRes = (data) => {
+    console.log(data);
+    setDataResume(data);
+  };
+
   return (
     <section className='container__home'>
       <article className='bar'>
@@ -47,6 +56,9 @@ export default function WaiterHome() {
       </article>
 
       <article className='orders'>
+        <div className='container__resume'>
+          {open && <OrderResume isChangeState={changeOrderState} isData={dataResume} />}
+        </div>
         <h1 className='orders__title'>{'pedidos actuales'.toUpperCase()}</h1>
         <div className='orders__employe'>
           {loading && <Loader></Loader>}
@@ -60,6 +72,7 @@ export default function WaiterHome() {
                   isEmploye={employeData.name}
                   isRol={employeData.rol}
                   isChangeState={changeOrderState}
+                  setData={dataRes}
                 ></OrderCard>
               );
             })}
