@@ -1,16 +1,42 @@
 import './OrderCard.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import OrderResume from './OrderResume';
 
-export default function OrderCard({ isData, isRol, isEmploye, isChangeState }) {
+export default function OrderCard({ isData, isRol, isEmploye, isChangeState, isUpdate, setData }) {
   const { id, employe, date, client, table, order, total, state } = isData;
   const [rol, setRol] = useState('');
+  const [newData, setNewData] = useState(null);
   const [employeName, setEmployeName] = useState('');
 
   useEffect(() => {
+    setNewData(isData);
     setRol(isRol);
     setEmployeName(isEmploye);
   }, [rol, employeName]);
+
+  function updateOrder(newState) {
+    // state = newState;
+    const editedData = {
+      id,
+      employe,
+      date,
+      client,
+      table,
+      order,
+      total,
+      state: newState,
+    };
+    isUpdate(editedData);
+    console.log(editedData);
+  }
+
+  function changeStateData(open, data) {
+    console.log(data);
+    isChangeState(open);
+
+    setData(data);
+  }
 
   return (
     <section className='container__card'>
@@ -50,7 +76,7 @@ export default function OrderCard({ isData, isRol, isEmploye, isChangeState }) {
                 ? 'green'
                 : state === 'preparando' && rol === 'cocinero'
                 ? 'yellow'
-                : state === ' listo' && rol === 'cocinero'
+                : state === 'listo' && rol === 'cocinero'
                 ? 'deep-orange '
                 : '')
             }
@@ -76,11 +102,13 @@ export default function OrderCard({ isData, isRol, isEmploye, isChangeState }) {
         </section>
         <section className='button'>
           {rol === 'mesero' ? (
-            <button className='button__status' onClick={() => isChangeState('pagando..')}>
+            <button className='button__status' onClick={() => changeStateData(true, newData)}>
               {'Pagar pedido'.toUpperCase()}
             </button>
           ) : (
-            <button className='button__status'>{'pedido listo'.toUpperCase()}</button>
+            <button className='button__status' onClick={() => updateOrder('listo')}>
+              {'pedido listo'.toUpperCase()}
+            </button>
           )}
         </section>
       </article>
