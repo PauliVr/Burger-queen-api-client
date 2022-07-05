@@ -71,7 +71,7 @@ export default function Menu() {
 
   // const [count, setCount] = useState(0);
   let api = helpHttp();
-  let url = 'http://localhost:5000/products';
+  let url = 'https://burger-queen-api-pauli.herokuapp.com/products';
 
   useEffect(() => {
     setLoading(true);
