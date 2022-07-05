@@ -33,7 +33,7 @@ export default function Platillo() {
   const [name, setName] = useState('');
 
   let api = helpHttp();
-  let url = 'http://localhost:5000/products';
+  let url = 'https://burger-queen-api-pauli.herokuapp.com/products';
 
   useEffect(() => {
     setLoading(true);
